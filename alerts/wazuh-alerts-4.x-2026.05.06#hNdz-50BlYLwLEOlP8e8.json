@@ -1,0 +1,128 @@
+{
+  "_index": "wazuh-alerts-4.x-2026.05.06",
+  "_id": "hNdz-50BlYLwLEOlP8e8",
+  "_score": 1,
+  "_source": {
+    "agent": {
+      "ip": "192.168.1.162",
+      "name": "DESKTOP-72VLLG0",
+      "id": "001"
+    },
+    "manager": {
+      "name": "wazuh-Standard-PC-i440FX-PIIX-1996"
+    },
+    "data": {
+      "win": {
+        "eventdata": {
+          "subjectLogonId": "0x0",
+          "targetLinkedLogonId": "0x0",
+          "impersonationLevel": "%%1833",
+          "ipAddress": "192.168.1.36",
+          "authenticationPackageName": "NTLM",
+          "lmPackageName": "NTLM V1",
+          "targetLogonId": "0x1158f86",
+          "logonProcessName": "NtLmSsp",
+          "logonGuid": "{00000000-0000-0000-0000-000000000000}",
+          "targetUserName": "ANONYMOUS LOGON",
+          "keyLength": "128",
+          "elevatedToken": "%%1843",
+          "subjectUserSid": "S-1-0-0",
+          "processId": "0x0",
+          "ipPort": "40312",
+          "targetDomainName": "NT AUTHORITY",
+          "targetUserSid": "S-1-5-7",
+          "virtualAccount": "%%1843",
+          "logonType": "3"
+        },
+        "system": {
+          "eventID": "4624",
+          "keywords": "0x8020000000000000",
+          "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+          "level": "0",
+          "channel": "Security",
+          "opcode": "0",
+          "message": "\"An account was successfully logged on.\r\n\r\nSubject:\r\n\tSecurity ID:\t\tS-1-0-0\r\n\tAccount Name:\t\t-\r\n\tAccount Domain:\t\t-\r\n\tLogon ID:\t\t0x0\r\n\r\nLogon Information:\r\n\tLogon Type:\t\t3\r\n\tRestricted Admin Mode:\t-\r\n\tRemote Credential Guard:\t-\r\n\tVirtual Account:\t\tNo\r\n\tElevated Token:\t\tNo\r\n\r\nImpersonation Level:\t\tImpersonation\r\n\r\nNew Logon:\r\n\tSecurity ID:\t\tS-1-5-7\r\n\tAccount Name:\t\tANONYMOUS LOGON\r\n\tAccount Domain:\t\tNT AUTHORITY\r\n\tLogon ID:\t\t0x1158F86\r\n\tLinked Logon ID:\t\t0x0\r\n\tNetwork Account Name:\t-\r\n\tNetwork Account Domain:\t-\r\n\tLogon GUID:\t\t{00000000-0000-0000-0000-000000000000}\r\n\r\nProcess Information:\r\n\tProcess ID:\t\t0x0\r\n\tProcess Name:\t\t-\r\n\r\nNetwork Information:\r\n\tWorkstation Name:\t-\r\n\tSource Network Address:\t192.168.1.36\r\n\tSource Port:\t\t40312\r\n\r\nDetailed Authentication Information:\r\n\tLogon Process:\t\tNtLmSsp \r\n\tAuthentication Package:\tNTLM\r\n\tTransited Services:\t-\r\n\tPackage Name (NTLM only):\tNTLM V1\r\n\tKey Length:\t\t128\r\n\r\nThis event is generated when a logon session is created. It is generated on the computer that was accessed.\r\n\r\nThe subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.\r\n\r\nThe logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).\r\n\r\nThe New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.\r\n\r\nThe network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.\r\n\r\nThe impersonation level field indicates the extent to which a process in the logon session can impersonate.\r\n\r\nThe authentication information fields provide detailed information about this specific logon request.\r\n\t- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.\r\n\t- Transited services indicate which intermediate services have participated in this logon request.\r\n\t- Package name indicates which sub-protocol was used among the NTLM protocols.\r\n\t- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.\"",
+          "version": "3",
+          "systemTime": "2026-05-06T04:01:58.9691228Z",
+          "eventRecordID": "168245",
+          "threadID": "8396",
+          "computer": "DESKTOP-72VLLG0",
+          "task": "12544",
+          "processID": "548",
+          "severityValue": "AUDIT_SUCCESS",
+          "providerName": "Microsoft-Windows-Security-Auditing"
+        }
+      }
+    },
+    "rule": {
+      "mail": false,
+      "level": 6,
+      "hipaa": [
+        "164.312.b"
+      ],
+      "pci_dss": [
+        "10.2.5"
+      ],
+      "tsc": [
+        "CC6.8",
+        "CC7.2",
+        "CC7.3"
+      ],
+      "description": "Successful Remote Logon Detected - User:\\ANONYMOUS LOGON - NTLM authentication, possible pass-the-hash attack.",
+      "groups": [
+        "win_evt_channel",
+        "windows",
+        "authentication_success"
+      ],
+      "nist_800_53": [
+        "AC.7",
+        "AU.14"
+      ],
+      "gdpr": [
+        "IV_32.2"
+      ],
+      "firedtimes": 1,
+      "mitre": {
+        "technique": [
+          "Pass the Hash",
+          "Domain Accounts"
+        ],
+        "id": [
+          "T1550.002",
+          "T1078.002"
+        ],
+        "tactic": [
+          "Defense Evasion",
+          "Lateral Movement",
+          "Persistence",
+          "Privilege Escalation",
+          "Initial Access"
+        ]
+      },
+      "id": "92652",
+      "gpg13": [
+        "7.1",
+        "7.2"
+      ]
+    },
+    "decoder": {
+      "name": "windows_eventchannel"
+    },
+    "full_log": "{\"win\":{\"system\":{\"providerName\":\"Microsoft-Windows-Security-Auditing\",\"providerGuid\":\"{54849625-5478-4994-a5ba-3e3b0328c30d}\",\"eventID\":\"4624\",\"version\":\"3\",\"level\":\"0\",\"task\":\"12544\",\"opcode\":\"0\",\"keywords\":\"0x8020000000000000\",\"systemTime\":\"2026-05-06T04:01:58.9691228Z\",\"eventRecordID\":\"168245\",\"processID\":\"548\",\"threadID\":\"8396\",\"channel\":\"Security\",\"computer\":\"DESKTOP-72VLLG0\",\"severityValue\":\"AUDIT_SUCCESS\",\"message\":\"\\\"An account was successfully logged on.\\r\\n\\r\\nSubject:\\r\\n\\tSecurity ID:\\t\\tS-1-0-0\\r\\n\\tAccount Name:\\t\\t-\\r\\n\\tAccount Domain:\\t\\t-\\r\\n\\tLogon ID:\\t\\t0x0\\r\\n\\r\\nLogon Information:\\r\\n\\tLogon Type:\\t\\t3\\r\\n\\tRestricted Admin Mode:\\t-\\r\\n\\tRemote Credential Guard:\\t-\\r\\n\\tVirtual Account:\\t\\tNo\\r\\n\\tElevated Token:\\t\\tNo\\r\\n\\r\\nImpersonation Level:\\t\\tImpersonation\\r\\n\\r\\nNew Logon:\\r\\n\\tSecurity ID:\\t\\tS-1-5-7\\r\\n\\tAccount Name:\\t\\tANONYMOUS LOGON\\r\\n\\tAccount Domain:\\t\\tNT AUTHORITY\\r\\n\\tLogon ID:\\t\\t0x1158F86\\r\\n\\tLinked Logon ID:\\t\\t0x0\\r\\n\\tNetwork Account Name:\\t-\\r\\n\\tNetwork Account Domain:\\t-\\r\\n\\tLogon GUID:\\t\\t{00000000-0000-0000-0000-000000000000}\\r\\n\\r\\nProcess Information:\\r\\n\\tProcess ID:\\t\\t0x0\\r\\n\\tProcess Name:\\t\\t-\\r\\n\\r\\nNetwork Information:\\r\\n\\tWorkstation Name:\\t-\\r\\n\\tSource Network Address:\\t192.168.1.36\\r\\n\\tSource Port:\\t\\t40312\\r\\n\\r\\nDetailed Authentication Information:\\r\\n\\tLogon Process:\\t\\tNtLmSsp \\r\\n\\tAuthentication Package:\\tNTLM\\r\\n\\tTransited Services:\\t-\\r\\n\\tPackage Name (NTLM only):\\tNTLM V1\\r\\n\\tKey Length:\\t\\t128\\r\\n\\r\\nThis event is generated when a logon session is created. It is generated on the computer that was accessed.\\r\\n\\r\\nThe subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.\\r\\n\\r\\nThe logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).\\r\\n\\r\\nThe New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.\\r\\n\\r\\nThe network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.\\r\\n\\r\\nThe impersonation level field indicates the extent to which a process in the logon session can impersonate.\\r\\n\\r\\nThe authentication information fields provide detailed information about this specific logon request.\\r\\n\\t- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.\\r\\n\\t- Transited services indicate which intermediate services have participated in this logon request.\\r\\n\\t- Package name indicates which sub-protocol was used among the NTLM protocols.\\r\\n\\t- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.\\\"\"},\"eventdata\":{\"subjectUserSid\":\"S-1-0-0\",\"subjectLogonId\":\"0x0\",\"targetUserSid\":\"S-1-5-7\",\"targetUserName\":\"ANONYMOUS LOGON\",\"targetDomainName\":\"NT AUTHORITY\",\"targetLogonId\":\"0x1158f86\",\"logonType\":\"3\",\"logonProcessName\":\"NtLmSsp\",\"authenticationPackageName\":\"NTLM\",\"logonGuid\":\"{00000000-0000-0000-0000-000000000000}\",\"lmPackageName\":\"NTLM V1\",\"keyLength\":\"128\",\"processId\":\"0x0\",\"ipAddress\":\"192.168.1.36\",\"ipPort\":\"40312\",\"impersonationLevel\":\"%%1833\",\"virtualAccount\":\"%%1843\",\"targetLinkedLogonId\":\"0x0\",\"elevatedToken\":\"%%1843\"}}}",
+    "input": {
+      "type": "log"
+    },
+    "@timestamp": "2026-05-06T04:01:59.972Z",
+    "location": "EventChannel",
+    "id": "1778040119.3370481",
+    "timestamp": "2026-05-05T22:01:59.972-0600"
+  },
+  "fields": {
+    "timestamp": [
+      "2026-05-06T04:01:59.972Z"
+    ],
+    "@timestamp": [
+      "2026-05-06T04:01:59.972Z"
+    ]
+  }
+}

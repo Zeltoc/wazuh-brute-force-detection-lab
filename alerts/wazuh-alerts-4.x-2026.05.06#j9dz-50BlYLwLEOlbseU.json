@@ -1,0 +1,112 @@
+{
+  "_index": "wazuh-alerts-4.x-2026.05.06",
+  "_id": "j9dz-50BlYLwLEOlbseU",
+  "_score": 1,
+  "_source": {
+    "agent": {
+      "ip": "192.168.1.162",
+      "name": "DESKTOP-72VLLG0",
+      "id": "001"
+    },
+    "manager": {
+      "name": "wazuh-Standard-PC-i440FX-PIIX-1996"
+    },
+    "data": {
+      "win": {
+        "eventdata": {
+          "subjectLogonId": "0x3e7",
+          "targetUserName": "Administrator",
+          "subjectUserSid": "S-1-5-18",
+          "subjectDomainName": "WORKGROUP",
+          "targetSid": "S-1-5-21-32255986-1804481791-872510285-500",
+          "subjectUserName": "DESKTOP-72VLLG0$"
+        },
+        "system": {
+          "eventID": "4740",
+          "keywords": "0x8020000000000000",
+          "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+          "level": "0",
+          "channel": "Security",
+          "opcode": "0",
+          "message": "\"A user account was locked out.\r\n\r\nSubject:\r\n\tSecurity ID:\t\tS-1-5-18\r\n\tAccount Name:\t\tDESKTOP-72VLLG0$\r\n\tAccount Domain:\t\tWORKGROUP\r\n\tLogon ID:\t\t0x3E7\r\n\r\nAccount That Was Locked Out:\r\n\tSecurity ID:\t\tS-1-5-21-32255986-1804481791-872510285-500\r\n\tAccount Name:\t\tAdministrator\r\n\r\nAdditional Information:\r\n\tCaller Computer Name:\t\"",
+          "version": "0",
+          "systemTime": "2026-05-06T04:02:17.1156074Z",
+          "eventRecordID": "168256",
+          "threadID": "5020",
+          "computer": "DESKTOP-72VLLG0",
+          "task": "13824",
+          "processID": "548",
+          "severityValue": "AUDIT_SUCCESS",
+          "providerName": "Microsoft-Windows-Security-Auditing"
+        }
+      }
+    },
+    "rule": {
+      "mail": false,
+      "level": 9,
+      "pci_dss": [
+        "8.1.6",
+        "11.4"
+      ],
+      "hipaa": [
+        "164.312.a.1"
+      ],
+      "tsc": [
+        "CC6.1",
+        "CC6.8",
+        "CC7.2",
+        "CC7.3"
+      ],
+      "description": "User account locked out (multiple login errors)",
+      "groups": [
+        "windows",
+        "windows_security",
+        "authentication_failures"
+      ],
+      "nist_800_53": [
+        "AC.7",
+        "SI.4"
+      ],
+      "gdpr": [
+        "IV_35.7.d"
+      ],
+      "firedtimes": 1,
+      "mitre": {
+        "technique": [
+          "Brute Force",
+          "Account Access Removal"
+        ],
+        "id": [
+          "T1110",
+          "T1531"
+        ],
+        "tactic": [
+          "Credential Access",
+          "Impact"
+        ]
+      },
+      "id": "60115",
+      "gpg13": [
+        "7.5"
+      ]
+    },
+    "decoder": {
+      "name": "windows_eventchannel"
+    },
+    "input": {
+      "type": "log"
+    },
+    "@timestamp": "2026-05-06T04:02:18.109Z",
+    "location": "EventChannel",
+    "id": "1778040138.3455550",
+    "timestamp": "2026-05-05T22:02:18.109-0600"
+  },
+  "fields": {
+    "timestamp": [
+      "2026-05-06T04:02:18.109Z"
+    ],
+    "@timestamp": [
+      "2026-05-06T04:02:18.109Z"
+    ]
+  }
+}

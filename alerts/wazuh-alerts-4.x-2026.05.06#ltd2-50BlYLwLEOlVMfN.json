@@ -1,0 +1,127 @@
+{
+  "_index": "wazuh-alerts-4.x-2026.05.06",
+  "_id": "ltd2-50BlYLwLEOlVMfN",
+  "_score": 1,
+  "_source": {
+    "agent": {
+      "ip": "192.168.1.162",
+      "name": "DESKTOP-72VLLG0",
+      "id": "001"
+    },
+    "manager": {
+      "name": "wazuh-Standard-PC-i440FX-PIIX-1996"
+    },
+    "data": {
+      "win": {
+        "eventdata": {
+          "subjectLogonId": "0x3e7",
+          "subjectDomainName": "WORKGROUP",
+          "targetLinkedLogonId": "0x1198467",
+          "impersonationLevel": "%%1833",
+          "ipAddress": "::1",
+          "authenticationPackageName": "Negotiate",
+          "workstationName": "DESKTOP-72VLLG0",
+          "targetLogonId": "0x1198431",
+          "logonProcessName": "CredPro",
+          "logonGuid": "{00000000-0000-0000-0000-000000000000}",
+          "targetUserName": "Admin",
+          "keyLength": "0",
+          "elevatedToken": "%%1842",
+          "subjectUserSid": "S-1-5-18",
+          "processId": "0x1f64",
+          "processName": "C:\\\\Windows\\\\System32\\\\consent.exe",
+          "ipPort": "0",
+          "targetDomainName": "DESKTOP-72VLLG0",
+          "targetUserSid": "S-1-5-21-32255986-1804481791-872510285-1001",
+          "virtualAccount": "%%1843",
+          "logonType": "2",
+          "subjectUserName": "DESKTOP-72VLLG0$"
+        },
+        "system": {
+          "eventID": "4624",
+          "keywords": "0x8020000000000000",
+          "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+          "level": "0",
+          "channel": "Security",
+          "opcode": "0",
+          "message": "\"An account was successfully logged on.\r\n\r\nSubject:\r\n\tSecurity ID:\t\tS-1-5-18\r\n\tAccount Name:\t\tDESKTOP-72VLLG0$\r\n\tAccount Domain:\t\tWORKGROUP\r\n\tLogon ID:\t\t0x3E7\r\n\r\nLogon Information:\r\n\tLogon Type:\t\t2\r\n\tRestricted Admin Mode:\t-\r\n\tRemote Credential Guard:\t-\r\n\tVirtual Account:\t\tNo\r\n\tElevated Token:\t\tYes\r\n\r\nImpersonation Level:\t\tImpersonation\r\n\r\nNew Logon:\r\n\tSecurity ID:\t\tS-1-5-21-32255986-1804481791-872510285-1001\r\n\tAccount Name:\t\tAdmin\r\n\tAccount Domain:\t\tDESKTOP-72VLLG0\r\n\tLogon ID:\t\t0x1198431\r\n\tLinked Logon ID:\t\t0x1198467\r\n\tNetwork Account Name:\t-\r\n\tNetwork Account Domain:\t-\r\n\tLogon GUID:\t\t{00000000-0000-0000-0000-000000000000}\r\n\r\nProcess Information:\r\n\tProcess ID:\t\t0x1f64\r\n\tProcess Name:\t\tC:\\Windows\\System32\\consent.exe\r\n\r\nNetwork Information:\r\n\tWorkstation Name:\tDESKTOP-72VLLG0\r\n\tSource Network Address:\t::1\r\n\tSource Port:\t\t0\r\n\r\nDetailed Authentication Information:\r\n\tLogon Process:\t\tCredPro\r\n\tAuthentication Package:\tNegotiate\r\n\tTransited Services:\t-\r\n\tPackage Name (NTLM only):\t-\r\n\tKey Length:\t\t0\r\n\r\nThis event is generated when a logon session is created. It is generated on the computer that was accessed.\r\n\r\nThe subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.\r\n\r\nThe logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).\r\n\r\nThe New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.\r\n\r\nThe network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.\r\n\r\nThe impersonation level field indicates the extent to which a process in the logon session can impersonate.\r\n\r\nThe authentication information fields provide detailed information about this specific logon request.\r\n\t- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.\r\n\t- Transited services indicate which intermediate services have participated in this logon request.\r\n\t- Package name indicates which sub-protocol was used among the NTLM protocols.\r\n\t- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.\"",
+          "version": "3",
+          "systemTime": "2026-05-06T04:05:22.7439976Z",
+          "eventRecordID": "168284",
+          "threadID": "5020",
+          "computer": "DESKTOP-72VLLG0",
+          "task": "12544",
+          "processID": "548",
+          "severityValue": "AUDIT_SUCCESS",
+          "providerName": "Microsoft-Windows-Security-Auditing"
+        }
+      }
+    },
+    "rule": {
+      "mail": false,
+      "level": 3,
+      "pci_dss": [
+        "10.2.5"
+      ],
+      "hipaa": [
+        "164.312.b"
+      ],
+      "tsc": [
+        "CC6.8",
+        "CC7.2",
+        "CC7.3"
+      ],
+      "description": "Windows Workstation Logon Success",
+      "groups": [
+        "windows",
+        "windows_security",
+        "authentication_success"
+      ],
+      "nist_800_53": [
+        "AU.14",
+        "AC.9"
+      ],
+      "gdpr": [
+        "IV_32.2"
+      ],
+      "firedtimes": 3,
+      "mitre": {
+        "technique": [
+          "Valid Accounts"
+        ],
+        "id": [
+          "T1078"
+        ],
+        "tactic": [
+          "Defense Evasion",
+          "Persistence",
+          "Privilege Escalation",
+          "Initial Access"
+        ]
+      },
+      "id": "60118",
+      "gpg13": [
+        "7.1",
+        "7.2"
+      ]
+    },
+    "decoder": {
+      "name": "windows_eventchannel"
+    },
+    "input": {
+      "type": "log"
+    },
+    "@timestamp": "2026-05-06T04:05:23.757Z",
+    "location": "EventChannel",
+    "id": "1778040323.3475044",
+    "timestamp": "2026-05-05T22:05:23.757-0600"
+  },
+  "fields": {
+    "timestamp": [
+      "2026-05-06T04:05:23.757Z"
+    ],
+    "@timestamp": [
+      "2026-05-06T04:05:23.757Z"
+    ]
+  }
+}
