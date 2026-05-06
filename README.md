@@ -212,8 +212,10 @@ The `subStatus` field in 4625 events is useful for triage and is worth knowing:
 ## Repo Structure
 
 ```
-wazuh-brute-force-lab/
+wazuh-brute-force-detection-lab/
 ├── README.md
+├── alerts/
+│   └── wazuh-alerts-4.x-2026.05.06#*.json
 ├── rules/
 │   └── local_rules.xml
 └── screenshots/
@@ -222,6 +224,7 @@ wazuh-brute-force-lab/
     ├── 03-full-event-timeline.png
     ├── 04-attack-chain-closeup.png
     └── 05-custom-rules-firing.png
+
 ```
 
 ---
